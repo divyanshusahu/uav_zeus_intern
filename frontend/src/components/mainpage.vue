@@ -7,7 +7,7 @@
             <v-flex xs12 sm4 offset-sm1>
               <v-card flat light>
                 <v-card-title>
-                  <h3>Input Fields</h3>
+                  <h2>Input Fields</h2>
                 </v-card-title>
                 <v-card-text>
                   <v-form ref="form" v-model="valid" lazy-validation>
@@ -54,8 +54,20 @@
               </v-card>
             </v-flex>
             <v-flex xs12 sm4 offset-sm2>
-              <v-card >
-                <v-card-text>5</v-card-text>
+              <v-card flat light>
+                <v-card-title>
+                  <h2>Results</h2>
+                </v-card-title>
+                <v-card-text >
+                  <p>Take off mass is <b>{{ output_data["take_off_mass"] }}</b> Kg.</p>
+                  <p>Endurance is <b>{{ output_data["endurance"] }}</b> hrs.</p>
+                  <p>Mass of Battery cruise is <b>{{ output_data["massofbatterycruise"] }}</b> Kg.</p>
+                  <p>Mass of Battery vtol is <b>{{ output_data["massofbatteryvtol"] }}</b> Kg.</p>
+                  <p>Mass of Motor vtol is <b>{{ output_data["massofmotorvtol"] }}</b> Kg.</p>
+                  <p>Mass of Controller vtol is <b>{{ output_data["massofcontrollervtol"] }}</b> Kg.</p>
+                  <p>Wingspan is <b>{{ output_data["wingspan"] }}</b> m.</p>
+                  <p>Wing area is <b>{{ output_data["wingarea"] }}</b> m<sup>2</sup>.</p>
+                </v-card-text>
               </v-card>
             </v-flex>
           </v-layout>
@@ -69,6 +81,7 @@
 export default {
   data: () => ({
     json_object: {},
+    output_data: {},
     valid: true,
     payloadMass: '',
     payloadMassRules: [
@@ -109,7 +122,8 @@ export default {
         this.json_object["takeOffSpeed"] = parseFloat(this.$refs.form._data.inputs[4].value);
         this.json_object["liftDragRatio"] = parseFloat(this.$refs.form._data.inputs[5].value);
         this.axios.post("/app/submit", this.json_object).then((res) => {
-          console.log(res.data);
+          Object.assign(this.output_data, res.data);
+          this.$forceUpdate();
         });
       }
     }

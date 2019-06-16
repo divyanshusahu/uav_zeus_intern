@@ -34,7 +34,7 @@ def submit() :
         iterations += 1
         if masspenalty > 0.01 :
             payloadmass = userpayload+totalmasspenalty
-            mass_per_iteration.append(MGTOM)
+            mass_per_iteration.append(round(MGTOM,3))
         else :
             break
     
@@ -46,15 +46,15 @@ def submit() :
 
     output_data["no_of_iterations"] = iterations
     output_data["mass_per_iteration"] = mass_per_iteration
-    output_data["take_off_mass"] = MGTOM
+    output_data["take_off_mass"] = round(MGTOM,3)
     output_data["payload"] = userpayload
-    output_data["endurance"] = Endurance
-    output_data["wingspan"] = wingspan
-    output_data["wingarea"] = wingarea
-    output_data["massofmotorvtol"] = massofmotorvtol
-    output_data["massofcontrollervtol"] = massofcontrollervtol
-    output_data["massofbatteryvtol"] = massofbatteryvtol
-    output_data["massofbatterycruise"] = massofbatterycruise
+    output_data["endurance"] = round(Endurance,3)
+    output_data["wingspan"] = round(wingspan,3)
+    output_data["wingarea"] = round(wingarea,3)
+    output_data["massofmotorvtol"] = round(massofmotorvtol,3)
+    output_data["massofcontrollervtol"] = round(massofcontrollervtol,3)
+    output_data["massofbatteryvtol"] = round(massofbatteryvtol,3)
+    output_data["massofbatterycruise"] = round(massofbatterycruise,3)
     output_data["totalmass"] = totalmass
 
     return json.dumps(output_data)

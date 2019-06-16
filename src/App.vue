@@ -4,7 +4,6 @@
     <v-toolbar app>
       <v-toolbar-title class="headline text-uppercase">
         <span>UAV</span>
-        <!--<span class="font-weight-light">MATERIAL DESIGN</span>-->
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn
@@ -12,7 +11,6 @@
         href="https://www.zeusnumerix.com"
         target="_blank"
       >
-        <!--<span class="mr-2">Latest Release</span>-->
         <img src="./assets/images/zeus.png">
       </v-btn>
     </v-toolbar>

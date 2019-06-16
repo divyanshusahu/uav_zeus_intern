@@ -78,6 +78,7 @@
 </template>
 
 <script>
+import { calc } from '../calc.js';
 export default {
   data: () => ({
     json_object: {},
@@ -114,17 +115,14 @@ export default {
     },
     validate() {
       if (this.$refs.form.validate()) {
-        //console.log(this.$refs.form._data.inputs[0].value);
         this.json_object["payloadMass"] = parseFloat(this.$refs.form._data.inputs[0].value);
         this.json_object["cruiseSpeed"] = parseFloat(this.$refs.form._data.inputs[1].value);
         this.json_object["cruiseAltitude"] = parseFloat(this.$refs.form._data.inputs[2].value);
         this.json_object["range"] = parseFloat(this.$refs.form._data.inputs[3].value);
         this.json_object["takeOffSpeed"] = parseFloat(this.$refs.form._data.inputs[4].value);
         this.json_object["liftDragRatio"] = parseFloat(this.$refs.form._data.inputs[5].value);
-        this.axios.post("/app/submit", this.json_object).then((res) => {
-          Object.assign(this.output_data, res.data);
-          this.$forceUpdate();
-        });
+        this.output_data = calc(this.json_object);
+        this.$forceUpdate();
       }
     }
   }

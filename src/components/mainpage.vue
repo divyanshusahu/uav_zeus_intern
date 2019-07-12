@@ -5,7 +5,7 @@
         <v-container grid-list-md>
           <v-layout row wrap>
             <v-flex xs12 sm4 offset-sm1>
-              <v-card flat light>
+              <v-card hover height="600px">
                 <v-card-title>
                   <h2>Input Fields</h2>
                 </v-card-title>
@@ -46,27 +46,73 @@
                       label="Lift/Drag Ratio" 
                       type="number"
                       required>
-                    </v-text-field>
-                    <v-btn color="success" @click="validate" :disabled="!valid">Run</v-btn>
-                    <v-btn color="warning" @click="reset">Reset</v-btn>
+                    </v-text-field> 
                   </v-form>
                 </v-card-text>
+                <v-card-actions>
+                  <v-btn flat color="success" @click="validate" :disabled="!valid">Run</v-btn>
+                  <v-btn flat color="warning" @click="reset">Reset</v-btn>
+                </v-card-actions>
               </v-card>
             </v-flex>
             <v-flex xs12 sm4 offset-sm2>
-              <v-card flat light>
+              <v-card hover height="600px">
                 <v-card-title>
                   <h2>Results</h2>
                 </v-card-title>
                 <v-card-text >
-                  <p>Take off mass is <b>{{ output_data["take_off_mass"] }}</b> Kg.</p>
+                  <!--<p>Take off mass is <b>{{ output_data["take_off_mass"] }}</b> Kg.</p>
                   <p>Endurance is <b>{{ output_data["endurance"] }}</b> hrs.</p>
                   <p>Mass of Battery cruise is <b>{{ output_data["massofbatterycruise"] }}</b> Kg.</p>
                   <p>Mass of Battery vtol is <b>{{ output_data["massofbatteryvtol"] }}</b> Kg.</p>
                   <p>Mass of Motor vtol is <b>{{ output_data["massofmotorvtol"] }}</b> Kg.</p>
                   <p>Mass of Controller vtol is <b>{{ output_data["massofcontrollervtol"] }}</b> Kg.</p>
                   <p>Wingspan is <b>{{ output_data["wingspan"] }}</b> m.</p>
-                  <p>Wing area is <b>{{ output_data["wingarea"] }}</b> m<sup>2</sup>.</p>
+                  <p>Wing area is <b>{{ output_data["wingarea"] }}</b> m<sup>2</sup>.</p>-->
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td>Take off mass is</td>
+                        <td>{{ output_data["take_off_mass"] }}</td>
+                        <td> Kg.</td>
+                      </tr>
+                      <tr>
+                        <td>Endurance is</td>
+                        <td>{{ output_data["endurance"] }}</td>
+                        <td> hrs.</td>
+                      </tr>
+                      <tr>
+                        <td>Mass of Battery cruise is</td>
+                        <td>{{ output_data["massofbatterycruise"] }}</td>
+                        <td> Kg.</td>
+                      </tr>
+                      <tr>
+                        <td>Mass of Battery vtol is</td>
+                        <td>{{ output_data["massofbatteryvtol"] }}</td>
+                        <td> Kg.</td>
+                      </tr>
+                      <tr>
+                        <td>Mass of Motor vtol is</td>
+                        <td>{{ output_data["massofmotorvtol"] }}</td>
+                        <td> Kg.</td>
+                      </tr>
+                      <tr>
+                        <td>Mass of Controller vtol is</td>
+                        <td>{{ output_data["massofcontrollervtol"] }}</td>
+                        <td> Kg.</td>
+                      </tr>
+                      <tr>
+                        <td>Wingspan is</td>
+                        <td>{{ output_data["wingspan"] }}</td>
+                        <td> m.</td>
+                      </tr>
+                      <tr>
+                        <td>Wing area is</td>
+                        <td>{{ output_data["wingarea"] }}</td>
+                        <td> m<sup>2</sup>.</td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </v-card-text>
               </v-card>
             </v-flex>
@@ -86,32 +132,34 @@ export default {
     valid: true,
     payloadMass: '',
     payloadMassRules: [
-      v => !!v || 'Payload Mass is required'
+      v => !!v || 'Required'
     ],
     cruiseSpeed: '',
     cruiseSpeedRules: [
-      v => !!v || 'Cruise Speed is required'
+      v => !!v || 'Required'
     ],
     cruiseAltitude: '',
     cruiseAltitudeRules: [
-      v => !!v || 'Cruise Altitude is required'
+      v => !!v || 'Required'
     ],
     range: '',
     rangeRules: [
-      v => !!v || 'Range is required'
+      v => !!v || 'Required'
     ],
     takeOffSpeed: '',
     takeOffSpeedRules: [
-      v => !!v || 'Take Off Speed is required'
+      v => !!v || 'Required'
     ],
     liftDragRatio: '',
     liftDragRatioRules: [
-      v => !!v || 'Lift Drag Ratio required'
+      v => !!v || 'Required'
     ]
   }),
   methods: {
     reset() {
-      this.$refs.form.reset()
+      this.$refs.form.reset();
+      this.output_data = {};
+      this.$forceUpdate();
     },
     validate() {
       if (this.$refs.form.validate()) {
@@ -122,7 +170,12 @@ export default {
         this.json_object["takeOffSpeed"] = parseFloat(this.$refs.form._data.inputs[4].value);
         this.json_object["liftDragRatio"] = parseFloat(this.$refs.form._data.inputs[5].value);
         this.output_data = calc(this.json_object);
-        this.$forceUpdate();
+        try {
+          this.$forceUpdate();
+        }
+        catch {
+          // This can be empty
+        }
       }
     }
   }

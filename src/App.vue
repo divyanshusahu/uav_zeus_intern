@@ -11,7 +11,7 @@
         href="https://www.zeusnumerix.com"
         target="_blank"
       >
-        <img src="./assets/images/zeus.png">
+        <img src="./assets/images/zeus.png" class="zeus_logo">
       </v-btn>
     </v-toolbar>
 

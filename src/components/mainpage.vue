@@ -130,27 +130,27 @@ export default {
     json_object: {},
     output_data: {},
     valid: true,
-    payloadMass: '',
+    payloadMass: '5',
     payloadMassRules: [
       v => !!v || 'Required'
     ],
-    cruiseSpeed: '',
+    cruiseSpeed: '40',
     cruiseSpeedRules: [
       v => !!v || 'Required'
     ],
-    cruiseAltitude: '',
+    cruiseAltitude: '1',
     cruiseAltitudeRules: [
       v => !!v || 'Required'
     ],
-    range: '',
+    range: '50',
     rangeRules: [
       v => !!v || 'Required'
     ],
-    takeOffSpeed: '',
+    takeOffSpeed: '10',
     takeOffSpeedRules: [
       v => !!v || 'Required'
     ],
-    liftDragRatio: '',
+    liftDragRatio: '12',
     liftDragRatioRules: [
       v => !!v || 'Required'
     ]

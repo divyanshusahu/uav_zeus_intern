@@ -5,7 +5,7 @@
         <v-container grid-list-md>
           <v-layout row wrap>
             <v-flex xs12 sm4 offset-sm1>
-              <v-card hover height="600px">
+              <v-card height="600px">
                 <v-card-title>
                   <h2>Input Fields</h2>
                 </v-card-title>
@@ -56,7 +56,7 @@
               </v-card>
             </v-flex>
             <v-flex xs12 sm4 offset-sm2>
-              <v-card hover height="600px">
+              <v-card height="600px">
                 <v-card-title>
                   <h2>Results</h2>
                 </v-card-title>

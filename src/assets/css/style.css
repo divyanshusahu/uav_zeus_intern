@@ -34,6 +34,10 @@ td {
 
 }*/
 
+.v-card {
+	box-shadow: 0 15px 35px 0px rgba(50,50,50,0.4);
+}
+
 table {
     width: 100%;
     border-spacing: 0;

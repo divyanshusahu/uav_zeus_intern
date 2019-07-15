@@ -9,7 +9,6 @@
     background-image: url("../images/bg.png"), linear-gradient(320deg, #00e1ff, #00bfff 25%, #00bfff 80%, #00e1ff);
     background-size: cover;
     background-repeat: no-repeat;
-    /*filter: blur(2px);*/
     z-index: -9;
 }
 
@@ -18,12 +17,12 @@
     height: 100%;
     z-index: 9;    
     background-color: rgba(0, 191, 255,0.75);
-    padding-top: 5rem;
+    padding-top: 0.5em;
 }
 
 td {
     font-size: 16px;
-    line-height: 4rem;
+    line-height: 3rem;
     margin: 0;
     padding: 0;
 }
@@ -59,8 +58,9 @@ tr {
     border-bottom: 1px solid rgba(0,0,0,1);
 }
 
-tr:nth-child(even) {
-    /*background-color: rgba(0, 191, 255,0.1);*/
+.v-toolbar {
+    -webkit-box-shadow: none;
+    box-shadow: none;
 }
 
 @media (max-width: 575px) {

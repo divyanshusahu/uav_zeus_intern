@@ -19,16 +19,20 @@
     <v-content>
       <mainpage />
     </v-content>
-  
+
+    <uavfooter />
+
   </v-app>
 </template>
 
 <script>
 import mainpage from './components/mainpage.vue'
+import uavfooter from './components/uavfooter.vue'
 export default {
   name: 'App',
   components: {
-    mainpage
+    mainpage,
+    uavfooter
   }
 }
 </script>

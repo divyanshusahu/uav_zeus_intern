@@ -3,7 +3,7 @@
     
     <v-toolbar app>
       <v-toolbar-title class="headline text-uppercase">
-        <span>UAV</span>
+        <span>Fixed Wing/Hydrbid UAV</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn
